@@ -13,7 +13,7 @@ public class Main extends Application {
         try{
             Parent root = FXMLLoader.load(getClass().getResource("/Application/views/Animation.fxml"));
             Scene scene = new Scene(root);
-            scene.getStylesheets().add(getClass().getResource("application.css").toExternalForm());
+            scene.getStylesheets().add(getClass().getResource("/Application/style/style.css").toExternalForm());
             stage.setScene(scene);
             stage.show();
         }

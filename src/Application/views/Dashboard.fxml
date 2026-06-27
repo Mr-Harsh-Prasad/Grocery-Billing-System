@@ -1,14 +1,50 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import java.util.*?>
-<?import javafx.scene.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-<AnchorPane xmlns="http://javafx.com/javafx"
-            xmlns:fx="http://javafx.com/fxml"
-            fx:controller="Application.controllers.DashboardController"
-            prefHeight="400.0" prefWidth="600.0">
 
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#f766da" height="400.0" stroke="#ff6eec" strokeType="INSIDE" width="94.0" />
+      <ImageView fitHeight="35.0" fitWidth="38.0" layoutX="28.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/img_1.png" />
+         </image>
+      </ImageView>
+      <Label layoutY="47.0" prefHeight="26.0" prefWidth="94.0" text=" Grocery Bill Desk">
+         <font>
+            <Font name="Californian FB Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="97.0" text="Dashboard">
+         <font>
+            <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="121.0" text="Billing">
+         <font>
+           <Font name="System Bold" size="12.0" />
+         </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="169.0" text="Customer">
+          <font>
+              <Font name="System Bold" size="12.0" />
+          </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="145.0" text="Products">
+          <font>
+               <Font name="System Bold" size="12.0" />
+          </font>
+      </Label>
+      <Label layoutX="11.0" layoutY="193.0" text="Setting">
+          <font>
+                <Font name="System Bold" size="12.0" />
+          </font>
+      </Label>
+   </children>
 </AnchorPane>
