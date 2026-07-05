@@ -11,10 +11,11 @@ public class Main extends Application {
     @Override
     public void start(Stage stage) {
         try{
-            Parent root = FXMLLoader.load(getClass().getResource("/Application/views/Animation.fxml"));
+            Parent root = FXMLLoader.load(getClass().getResource("/Application/views/Main.fxml"));
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/Application/style/style.css").toExternalForm());
             stage.setScene(scene);
+            stage.setMaximized(true);
             stage.show();
         }
         catch (Exception e){
