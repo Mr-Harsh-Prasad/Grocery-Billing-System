@@ -5,6 +5,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
+import javafx.scene.image.Image;
 
 public class Main extends Application {
 
@@ -15,6 +16,8 @@ public class Main extends Application {
             Scene scene = new Scene(root);
             scene.getStylesheets().add(getClass().getResource("/Application/style/style.css").toExternalForm());
             stage.setScene(scene);
+            stage.setTitle("Grocery Billing System");
+            stage.getIcons().add(new Image(getClass().getResourceAsStream("/Application/images/img_1.png")));
             stage.setMaximized(true);
             stage.show();
         }
