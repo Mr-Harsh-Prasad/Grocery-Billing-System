@@ -6,7 +6,6 @@
 <?import javafx.scene.chart.NumberAxis?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
 <?import javafx.scene.layout.BorderPane?>
@@ -78,7 +77,34 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                   </LineChart>
-                  <ListView GridPane.columnIndex="1" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="39.0" spacing="5.0" styleClass="table-head">
+                           <children>
+                              <Label styleClass="text" text="Low Stock Alert" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button ellipsisString="" mnemonicParsing="false" text="View All" textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TableView>
+                          <columns>
+                            <TableColumn prefWidth="258.39987790584564" text="C1" />
+                            <TableColumn prefWidth="116.0001220703125" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
                   <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
                      <children>
                         <HBox alignment="CENTER" spacing="5.0" styleClass="table-head" stylesheets="@../style/style.css">
@@ -115,10 +141,10 @@
                         </HBox>
                         <TableView>
                            <columns>
-                              <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
-                              <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
-                              <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
-                              <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
+                              <TableColumn prefWidth="108.80001676082611" sortable="false" text="Invoice ID" />
+                              <TableColumn prefWidth="122.39990997314453" sortable="false" text="Coustomer" />
+                              <TableColumn prefWidth="80.800048828125" sortable="false" text="Amount" />
+                              <TableColumn prefWidth="60.0000061035156" sortable="false" text="Time" />
                            </columns>
                         </TableView>
                      </children>
