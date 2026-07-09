@@ -4,14 +4,23 @@
     -fx--fx-effect: dropshadow(gaussian, rgba(0,0,0,.15), 10, 0, 0, 3);
 }
 #card1 {
-    -fx-background-color: lightskyblue;
+    -fx-background-color: #cfedff;
 }
 #card2 {
-    -fx-background-color: lightpink;
+    -fx-background-color: #ffe6d1;
 }
 #card3 {
-    -fx-background-color: lightyellow;
+    -fx-background-color: #ffccf8;
 }
 #card4 {
-    -fx-background-color: lightgreen;
+    -fx-background-color: #d3ffd1;
+}
+.table-head {
+    -fx-background-color: #114700;
+    -fx-background-radius: 10 10 0 0;
+}
+.text {
+    -fx-font-family: "Times New Roman";
+    -fx-font-size: 18px;
+    -fx-font-weight: bold;
 }

@@ -4,6 +4,7 @@
 <?import javafx.scene.chart.CategoryAxis?>
 <?import javafx.scene.chart.LineChart?>
 <?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TableColumn?>
@@ -11,6 +12,8 @@
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 
@@ -31,23 +34,23 @@
                <children>
                   <VBox id="card1" alignment="CENTER" maxWidth="250.0" prefWidth="200.0" styleClass="dashboard-card" GridPane.halignment="CENTER">
                      <children>
-                        <Label id="card-text" text="Total Sale's" />
-                        <Label text="Label" />
+                        <Label styleClass="text" text="Total Sale's" />
+                        <Label styleClass="text" text="Label" />
                      </children></VBox>
                   <VBox id="card2" alignment="CENTER" maxWidth="250.0" prefWidth="200.0" styleClass="dashboard-card" GridPane.columnIndex="1" GridPane.halignment="CENTER">
                      <children>
-                        <Label id="card-text" text="Total Orders" />
-                        <Label text="Label" />
+                        <Label styleClass="text" text="Total Orders" />
+                        <Label styleClass="text" text="Label" />
                      </children></VBox>
                   <VBox id="card3" alignment="CENTER" maxWidth="250.0" prefWidth="200.0" styleClass="dashboard-card" GridPane.columnIndex="2" GridPane.halignment="CENTER">
                      <children>
-                        <Label id="card-text" text="Total Products" />
-                        <Label text="Label" />
+                        <Label styleClass="text" text="Total Products" />
+                        <Label styleClass="text" text="Label" />
                      </children></VBox>
                   <VBox id="card4" alignment="CENTER" maxWidth="250.0" prefWidth="200.0" styleClass="dashboard-card" GridPane.columnIndex="3" GridPane.halignment="CENTER">
                      <children>
-                        <Label id="card-text" text="Total Profit" />
-                        <Label text="Label" />
+                        <Label styleClass="text" text="Total Profit" />
+                        <Label styleClass="text" text="Label" />
                      </children></VBox>
                </children>
                <VBox.margin>
@@ -67,7 +70,6 @@
                   <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
                </VBox.margin>
                <children>
-                  <ListView GridPane.columnIndex="1" />
                   <LineChart>
                     <xAxis>
                       <CategoryAxis side="BOTTOM" />
@@ -76,18 +78,51 @@
                       <NumberAxis side="LEFT" />
                     </yAxis>
                   </LineChart>
-                  <TableView GridPane.rowIndex="1">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
-                  <TableView GridPane.columnIndex="1" GridPane.rowIndex="1">
-                    <columns>
-                      <TableColumn prefWidth="75.0" text="C1" />
-                      <TableColumn prefWidth="75.0" text="C2" />
-                    </columns>
-                  </TableView>
+                  <ListView GridPane.columnIndex="1" />
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                     <children>
+                        <HBox alignment="CENTER" spacing="5.0" styleClass="table-head" stylesheets="@../style/style.css">
+                           <children>
+                              <Label ellipsisString="" text="Top Selling Products" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" text="View All" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TableView>
+                          <columns>
+                              <TableColumn prefWidth="71.20000725984573" sortable="false" text="Product" />
+                              <TableColumn prefWidth="142.39997100830078" sortable="false" />
+                              <TableColumn minWidth="0.0" prefWidth="84.80006408691406" sortable="false" text="Sold (Qty)" />
+                              <TableColumn prefWidth="73.5999816894531" sortable="false" text="Revenue" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <HBox alignment="CENTER" spacing="5.0" styleClass="table-head" stylesheets="@../style/style.css">
+                           <children>
+                              <Label ellipsisString="" text="Recent transactions" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" text="View All" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TableView>
+                           <columns>
+                              <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
+                              <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
+                              <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
+                              <TableColumn prefWidth="75.0" sortable="false" text="Column X" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
                </children>
             </GridPane>
          </children>
