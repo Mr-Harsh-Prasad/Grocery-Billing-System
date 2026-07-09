@@ -1,1 +1,17 @@
-.card
+.dashboard-card {
+    -fx-background-radius:10;
+    -fx-padding: 15;
+    -fx--fx-effect: dropshadow(gaussian, rgba(0,0,0,.15), 10, 0, 0, 3);
+}
+#card1 {
+    -fx-background-color: lightskyblue;
+}
+#card2 {
+    -fx-background-color: lightpink;
+}
+#card3 {
+    -fx-background-color: lightyellow;
+}
+#card4 {
+    -fx-background-color: lightgreen;
+}
