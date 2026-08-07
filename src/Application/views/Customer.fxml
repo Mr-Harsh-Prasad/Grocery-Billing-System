@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import com.gluonhq.charm.glisten.control.Avatar?>
 <?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
@@ -12,14 +16,14 @@
 
 <BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
    <top>
-      <HBox alignment="CENTER" spacing="10.0" styleClass="section" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="498.0" spacing="10.0" styleClass="section" BorderPane.alignment="CENTER">
          <children>
             <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/customer_logo.png" />
                </image>
             </ImageView>
-            <VBox alignment="CENTER_LEFT" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="185.0" HBox.hgrow="ALWAYS">
                <children>
                   <Label styleClass="label-text" text="Customers" />
                   <Label text="Add, update and manage customer details" />
@@ -31,6 +35,7 @@
                   <Insets right="5.0" />
                </HBox.margin>
             </TextField>
+            <Button mnemonicParsing="false" text="Button" />
          </children>
          <padding>
             <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -43,12 +48,70 @@
    <center>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="section" HBox.hgrow="ALWAYS" />
-            <VBox prefHeight="200.0" prefWidth="100.0" styleClass="section" HBox.hgrow="ALWAYS" />
+            <VBox prefHeight="200.0" prefWidth="235.0" styleClass="section" HBox.hgrow="ALWAYS">
+               <children>
+                  <TableView prefHeight="178.0" prefWidth="320.0">
+                     <columns>
+                        <TableColumn prefWidth="42.40002363920212" text="id" />
+                        <TableColumn prefWidth="53.599971771240234" text="Name" />
+                        <TableColumn prefWidth="57.59998321533203" text="Phone" />
+                        <TableColumn prefWidth="64.7999267578125" text="Email" />
+                        <TableColumn prefWidth="96.80006408691406" text="city" />
+                     </columns>
+                  </TableView>
+               </children></VBox>
+            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="section" HBox.hgrow="ALWAYS">
+               <children>
+                  <HBox alignment="CENTER" prefHeight="18.0" prefWidth="185.0">
+                     <children>
+                        <Label text="Label" HBox.hgrow="ALWAYS" />
+                        <Region HBox.hgrow="ALWAYS" />
+                        <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS" />
+                     </children>
+                  </HBox>
+                  <Avatar />
+                  <HBox>
+                     <children>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Coustomer id" />
+                              <Label text="Name" />
+                              <Label text="Phone" />
+                              <Label text="Membership" />
+                              <Label text="Total Purchase" />
+                              <Label text="Total Order" />
+                              <Label text="Status" />
+                              <Button mnemonicParsing="false" text="Button" />
+                           </children>
+                        </VBox>
+                        <VBox prefHeight="200.0" prefWidth="100.0">
+                           <children>
+                              <Label text="Label" />
+                              <Label text="Label" />
+                              <Label text="Label" />
+                              <Label text="Label" />
+                              <Label text="Label" />
+                              <Label text="Label" />
+                              <Label text="Label" />
+                              <Button mnemonicParsing="false" text="Button" />
+                           </children>
+                        </VBox>
+                     </children>
+                  </HBox>
+               </children></VBox>
          </children>
       </HBox>
    </center>
    <bottom>
-      <HBox styleClass="section" BorderPane.alignment="CENTER" />
+      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="508.0" spacing="5.0" styleClass="section" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Button" />
+            <Button mnemonicParsing="false" text="Button" />
+         </children></HBox>
    </bottom>
 </BorderPane>
