@@ -1,11 +1,15 @@
 package Application;
 
+import Application.database.DBConnection;
+import Application.database.DatabaseInitializer;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import javafx.scene.image.Image;
+
+import java.sql.Connection;
 
 public class Main extends Application {
 
@@ -27,6 +31,18 @@ public class Main extends Application {
     }
 
     public static void main(String[] args) {
-        launch(args);
+
+        Connection con = DBConnection.connect();
+
+        if(con != null){
+
+            System.out.println("Connected Successfully");
+        }
+
+        DatabaseInitializer.initialize();
+
+        {
+            launch(args);
+        }
     }
 }

@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.chart.CategoryAxis?>
+<?import javafx.scene.chart.LineChart?>
+<?import javafx.scene.chart.NumberAxis?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.ColumnConstraints?>
+<?import javafx.scene.layout.GridPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Region?>
+<?import javafx.scene.layout.RowConstraints?>
+<?import javafx.scene.layout.VBox?>
+
+<BorderPane   xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <VBox prefHeight="710.0" prefWidth="810.0" spacing="20.0" BorderPane.alignment="TOP_CENTER">
+         <children>
+            <GridPane alignment="CENTER" hgap="25.0">
+              <columnConstraints>
+                <ColumnConstraints percentWidth="25" />
+                <ColumnConstraints percentWidth="25" />
+                <ColumnConstraints percentWidth="25" />
+                <ColumnConstraints percentWidth="25" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="120.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <children>
+                  <VBox id="card1" alignment="CENTER" maxWidth="250.0" prefWidth="200.0" styleClass="dashboard-card" GridPane.halignment="CENTER">
+                     <children>
+                        <Label styleClass="label-text" text="Total Sale's" />
+                        <Label styleClass="label-text" text="Label" />
+                     </children></VBox>
+                  <VBox id="card2" alignment="CENTER" maxWidth="250.0" prefWidth="200.0" styleClass="dashboard-card" GridPane.columnIndex="1" GridPane.halignment="CENTER">
+                     <children>
+                        <Label styleClass="label-text" text="Total Orders" />
+                        <Label styleClass="label-text" text="Label" />
+                     </children></VBox>
+                  <VBox id="card3" alignment="CENTER" maxWidth="250.0" prefWidth="200.0" styleClass="dashboard-card" GridPane.columnIndex="2" GridPane.halignment="CENTER">
+                     <children>
+                        <Label styleClass="label-text" text="Total Products" />
+                        <Label styleClass="label-text" text="Label" />
+                     </children></VBox>
+                  <VBox id="card4" alignment="CENTER" maxWidth="250.0" prefWidth="200.0" styleClass="dashboard-card" GridPane.columnIndex="3" GridPane.halignment="CENTER">
+                     <children>
+                        <Label styleClass="label-text" text="Total Profit" />
+                        <Label styleClass="label-text" text="Label" />
+                     </children></VBox>
+               </children>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+               </VBox.margin>
+            </GridPane>
+            <GridPane alignment="TOP_CENTER" hgap="20.0" vgap="20.0" VBox.vgrow="ALWAYS">
+              <columnConstraints>
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+                <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
+              </columnConstraints>
+              <rowConstraints>
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+                <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
+              </rowConstraints>
+               <VBox.margin>
+                  <Insets bottom="10.0" left="10.0" right="10.0" top="20.0" />
+               </VBox.margin>
+               <children>
+                  <LineChart>
+                    <xAxis>
+                      <CategoryAxis side="BOTTOM" />
+                    </xAxis>
+                    <yAxis>
+                      <NumberAxis side="LEFT" />
+                    </yAxis>
+                  </LineChart>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1">
+                     <children>
+                        <HBox alignment="CENTER_LEFT" prefHeight="39.0" spacing="5.0" styleClass="table-head">
+                           <children>
+                              <Label styleClass="label-text" text="Low Stock Alert" textFill="WHITE" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Label>
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button ellipsisString="" mnemonicParsing="false" text="View All" textOverrun="CLIP" HBox.hgrow="ALWAYS">
+                                 <HBox.margin>
+                                    <Insets />
+                                 </HBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TableView>
+                          <columns>
+                            <TableColumn prefWidth="258.39987790584564" text="C1" />
+                            <TableColumn prefWidth="116.0001220703125" text="C2" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.rowIndex="1">
+                     <children>
+                        <HBox alignment="CENTER" spacing="5.0" styleClass="table-head">
+                           <children>
+                              <Label ellipsisString="" styleClass="label-text" text="Top Selling Products" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" text="View All" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TableView>
+                          <columns>
+                              <TableColumn prefWidth="71.20000725984573" sortable="false" text="Product" />
+                              <TableColumn prefWidth="142.39997100830078" sortable="false" />
+                              <TableColumn minWidth="0.0" prefWidth="84.80006408691406" sortable="false" text="Sold (Qty)" />
+                              <TableColumn prefWidth="73.5999816894531" sortable="false" text="Revenue" />
+                          </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+                  <VBox prefHeight="200.0" prefWidth="100.0" GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <children>
+                        <HBox alignment="CENTER" spacing="5.0" styleClass="table-head">
+                           <children>
+                              <Label ellipsisString="" styleClass="label-text" text="Recent transactions" textFill="WHITE" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
+                              <Region HBox.hgrow="ALWAYS" />
+                              <Button mnemonicParsing="false" text="View All" textOverrun="CLIP" HBox.hgrow="ALWAYS" />
+                           </children>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
+                        </HBox>
+                        <TableView>
+                           <columns>
+                              <TableColumn prefWidth="108.80001676082611" sortable="false" text="Invoice ID" />
+                              <TableColumn prefWidth="122.39990997314453" sortable="false" text="Coustomer" />
+                              <TableColumn prefWidth="80.800048828125" sortable="false" text="Amount" />
+                              <TableColumn prefWidth="60.0000061035156" sortable="false" text="Time" />
+                           </columns>
+                        </TableView>
+                     </children>
+                  </VBox>
+               </children>
+            </GridPane>
+         </children>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <padding>
+            <Insets bottom="10.0" left="10.0" right="10.0" top="10.0" />
+         </padding>
+      </VBox>
+   </center>
+</BorderPane>
