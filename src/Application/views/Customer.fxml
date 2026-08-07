@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import com.gluonhq.charm.glisten.control.Avatar?>
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -69,7 +68,6 @@
                         <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS" />
                      </children>
                   </HBox>
-                  <Avatar />
                   <HBox>
                      <children>
                         <VBox prefHeight="200.0" prefWidth="100.0">
