@@ -34,3 +34,6 @@
 #search_customer {
     -fx-border-color: #686e8c;
 }
+#returnAmount{
+    -fx-background-color: #96fa96;
+}
