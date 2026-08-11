@@ -14,10 +14,14 @@ public class DatabaseInitializer {
             stmt.execute("""
                 CREATE TABLE IF NOT EXISTS products(
                     id INTEGER PRIMARY KEY AUTOINCREMENT,
-                    name TEXT NOT NULL,
+                    product_name TEXT NOT NULL,
                     category TEXT,
-                    price REAL NOT NULL,
-                    quantity INTEGER NOT NULL,
+                    unit TEXT,
+                    purchase_price REAL,
+                    selling_price REAL,
+                    stock_quantity INTEGER,
+                    reorder_level INTEGER,
+                    description TEXT,
                     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
                 );
             """);

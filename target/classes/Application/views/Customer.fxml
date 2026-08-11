@@ -13,103 +13,251 @@
 <?import javafx.scene.layout.Region?>
 <?import javafx.scene.layout.VBox?>
 
-<BorderPane maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" stylesheets="@../style/style.css" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<BorderPane
+        xmlns="http://javafx.com/javafx/26"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="Application.controllers.CustomerController"
+        stylesheets="@../style/style.css"
+        maxWidth="1.7976931348623157E308"
+        maxHeight="1.7976931348623157E308">
+
+   <!-- ================= TOP ================= -->
+
    <top>
-      <HBox alignment="CENTER" prefHeight="27.0" prefWidth="498.0" spacing="10.0" styleClass="section" BorderPane.alignment="CENTER">
-         <children>
-            <ImageView fitHeight="50.0" fitWidth="50.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/customer_logo.png" />
-               </image>
-            </ImageView>
-            <VBox alignment="CENTER_LEFT" prefHeight="42.0" prefWidth="185.0" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label styleClass="label-text" text="Customers" />
-                  <Label text="Add, update and manage customer details" />
-               </children>
-            </VBox>
-            <Region HBox.hgrow="ALWAYS" />
-            <TextField id="search_customer" alignment="CENTER" promptText="Search customer by name, phone or email" HBox.hgrow="ALWAYS">
-               <HBox.margin>
-                  <Insets right="5.0" />
-               </HBox.margin>
-            </TextField>
-            <Button mnemonicParsing="false" text="Button" />
-         </children>
+
+      <HBox
+              alignment="CENTER"
+              spacing="12"
+              styleClass="section">
+
          <padding>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+            <Insets top="10" bottom="10" left="10" right="10"/>
          </padding>
-         <BorderPane.margin>
-            <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
-         </BorderPane.margin>
+
+         <!-- Logo -->
+
+         <ImageView
+                 fitHeight="50"
+                 fitWidth="50"
+                 preserveRatio="true"
+                 pickOnBounds="true">
+
+            <image>
+               <Image url="@../images/customer_logo.png"/>
+            </image>
+
+         </ImageView>
+
+         <!-- Title -->
+
+         <VBox
+                 alignment="CENTER_LEFT"
+                 spacing="2">
+
+            <Label
+                    text="Customers"
+                    styleClass="label-text"/>
+
+            <Label
+                    text="Add, update and manage customer details"/>
+
+         </VBox>
+
+         <Region HBox.hgrow="ALWAYS"/>
+
+         <!-- Search -->
+
+         <TextField
+                 fx:id="searchField"
+                 prefWidth="300"
+                 promptText="Search customer by name or phone"/>
+
+         <Button
+                 text="Search"/>
+
+         <Button
+                 text="Refresh"
+                 onAction="#handleRefresh"/>
+
       </HBox>
+
    </top>
+
+
+   <!-- ================= CENTER ================= -->
+
    <center>
-      <HBox BorderPane.alignment="CENTER">
-         <children>
-            <VBox prefHeight="200.0" prefWidth="235.0" styleClass="section" HBox.hgrow="ALWAYS">
-               <children>
-                  <TableView prefHeight="178.0" prefWidth="320.0">
-                     <columns>
-                        <TableColumn prefWidth="42.40002363920212" text="id" />
-                        <TableColumn prefWidth="53.599971771240234" text="Name" />
-                        <TableColumn prefWidth="57.59998321533203" text="Phone" />
-                        <TableColumn prefWidth="64.7999267578125" text="Email" />
-                        <TableColumn prefWidth="96.80006408691406" text="city" />
-                     </columns>
-                  </TableView>
-               </children></VBox>
-            <VBox alignment="TOP_CENTER" prefHeight="200.0" prefWidth="100.0" styleClass="section" HBox.hgrow="ALWAYS">
-               <children>
-                  <HBox alignment="CENTER" prefHeight="18.0" prefWidth="185.0">
-                     <children>
-                        <Label text="Label" HBox.hgrow="ALWAYS" />
-                        <Region HBox.hgrow="ALWAYS" />
-                        <Button alignment="CENTER_RIGHT" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS" />
-                     </children>
-                  </HBox>
-                  <HBox>
-                     <children>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Coustomer id" />
-                              <Label text="Name" />
-                              <Label text="Phone" />
-                              <Label text="Membership" />
-                              <Label text="Total Purchase" />
-                              <Label text="Total Order" />
-                              <Label text="Status" />
-                              <Button mnemonicParsing="false" text="Button" />
-                           </children>
-                        </VBox>
-                        <VBox prefHeight="200.0" prefWidth="100.0">
-                           <children>
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <Label text="Label" />
-                              <Button mnemonicParsing="false" text="Button" />
-                           </children>
-                        </VBox>
-                     </children>
-                  </HBox>
-               </children></VBox>
-         </children>
+
+      <HBox
+              spacing="10">
+
+         <padding>
+            <Insets top="5" bottom="5" left="5" right="5"/>
+         </padding>
+
+
+         <!-- ================= CUSTOMER TABLE ================= -->
+
+         <VBox
+                 spacing="8"
+                 styleClass="section"
+                 HBox.hgrow="ALWAYS">
+
+            <Label
+                    text="Customer List"
+                    styleClass="label-text"/>
+
+            <TableView
+                    fx:id="customerTable"
+                    VBox.vgrow="ALWAYS">
+
+               <columns>
+
+                  <TableColumn
+                          fx:id="idColumn"
+                          text="ID"
+                          prefWidth="70"/>
+
+                  <TableColumn
+                          fx:id="nameColumn"
+                          text="Name"
+                          prefWidth="220"/>
+
+                  <TableColumn
+                          fx:id="phoneColumn"
+                          text="Phone"
+                          prefWidth="180"/>
+
+               </columns>
+
+            </TableView>
+
+         </VBox>
+
+
+         <!-- ================= DETAILS ================= -->
+
+         <VBox
+                 prefWidth="320"
+                 spacing="15"
+                 styleClass="section">
+
+            <HBox
+                    alignment="CENTER">
+
+               <Label
+                       text="Customer Details"
+                       styleClass="label-text"/>
+
+               <Region HBox.hgrow="ALWAYS"/>
+
+               <Button
+                       text="Clear"
+                       onAction="#handleClear"/>
+
+            </HBox>
+
+
+            <!-- Details -->
+
+            <HBox spacing="10">
+
+               <VBox
+                       spacing="15"
+                       prefWidth="120">
+
+                  <Label text="Customer ID"/>
+                  <Label text="Name"/>
+                  <Label text="Phone"/>
+                  <Label text="Total Purchase"/>
+                  <Label text="Total Orders"/>
+
+               </VBox>
+
+
+               <VBox
+                       spacing="15"
+                       prefWidth="160">
+
+                  <Label
+                          fx:id="customerIdLabel"
+                          text="-"/>
+
+                  <Label
+                          fx:id="customerNameLabel"
+                          text="-"/>
+
+                  <Label
+                          fx:id="customerPhoneLabel"
+                          text="-"/>
+
+                  <Label
+                          fx:id="totalPurchaseLabel"
+                          text="₹ 0.00"/>
+
+                  <Label
+                          fx:id="totalOrdersLabel"
+                          text="0"/>
+
+               </VBox>
+
+            </HBox>
+
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+
+            <!-- Customer actions -->
+
+            <HBox
+                    spacing="8"
+                    alignment="CENTER">
+
+               <Button
+                       text="+ Add Customer"
+                       onAction="#handleAddCustomer"/>
+
+               <Button
+                       text="Update"
+                       onAction="#handleUpdateCustomer"/>
+
+               <Button
+                       text="Delete"
+                       onAction="#handleDeleteCustomer"/>
+
+            </HBox>
+
+         </VBox>
+
       </HBox>
+
    </center>
+
+
+   <!-- ================= BOTTOM ================= -->
+
    <bottom>
-      <HBox alignment="CENTER" prefHeight="0.0" prefWidth="508.0" spacing="5.0" styleClass="section" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-            <Button mnemonicParsing="false" text="Button" />
-         </children></HBox>
+
+      <HBox
+              alignment="CENTER"
+              spacing="10"
+              styleClass="section">
+
+         <padding>
+            <Insets top="10" bottom="10" left="10" right="10"/>
+         </padding>
+
+         <Button
+                 text="Clear Selection"
+                 onAction="#handleClear"/>
+
+         <Region HBox.hgrow="ALWAYS"/>
+
+         <Label
+                 text="Select a customer from the table to manage their details."/>
+
+      </HBox>
+
    </bottom>
+
 </BorderPane>

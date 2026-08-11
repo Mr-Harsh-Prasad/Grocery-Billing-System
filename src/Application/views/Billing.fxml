@@ -4,9 +4,9 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.ChoiceBox?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
 <?import javafx.scene.control.TextField?>
-<?import javafx.scene.control.TreeTableColumn?>
-<?import javafx.scene.control.TreeTableView?>
 <?import javafx.scene.layout.BorderPane?>
 <?import javafx.scene.layout.ColumnConstraints?>
 <?import javafx.scene.layout.GridPane?>
@@ -18,18 +18,18 @@
 
 <BorderPane xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Application.controllers.BillingController">
    <top>
-      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" styleClass="SectionBox" BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" styleClass="SectionBox" HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Invoice No." VBox.vgrow="ALWAYS" />
-                  <Label text="Label" VBox.vgrow="ALWAYS" />
+                  <Label fx:id="invoiceNoLabel" text="Label" VBox.vgrow="ALWAYS" />
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" styleClass="SectionBox" HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Date &amp; Time" VBox.vgrow="ALWAYS" />
                   <Label fx:id="DateTimeLabel" text="Label" VBox.vgrow="ALWAYS" />
@@ -38,18 +38,21 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" styleClass="SectionBox" HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Customer" VBox.vgrow="ALWAYS" />
-                  <ChoiceBox prefWidth="150.0" />
+                  <ChoiceBox fx:id="customerChoiceBox" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></ChoiceBox>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" styleClass="SectionBox" HBox.hgrow="ALWAYS">
                <children>
-                  <Button mnemonicParsing="false" text="+ New" VBox.vgrow="ALWAYS">
+                  <Button fx:id="newCustomerButton" mnemonicParsing="false" onAction="#handleNewCustomer" text="+ New" VBox.vgrow="ALWAYS">
                      <font>
                         <Font size="14.0" />
                      </font>
@@ -59,19 +62,25 @@
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" styleClass="SectionBox" HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Mobile No." VBox.vgrow="ALWAYS" />
-                  <TextField promptText="+91 " VBox.vgrow="ALWAYS" />
+                  <TextField fx:id="mobileNumberField" promptText="+91 " VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" />
+                     </VBox.margin></TextField>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
             </VBox>
-            <VBox alignment="CENTER" HBox.hgrow="ALWAYS">
+            <VBox alignment="CENTER" styleClass="SectionBox" HBox.hgrow="ALWAYS">
                <children>
                   <Label text="Cashier" VBox.vgrow="ALWAYS" />
-                  <ChoiceBox prefWidth="150.0" />
+                  <ChoiceBox fx:id="cashierChoiceBox" prefWidth="150.0">
+                     <VBox.margin>
+                        <Insets bottom="5.0" />
+                     </VBox.margin></ChoiceBox>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -86,21 +95,36 @@
    <center>
       <HBox BorderPane.alignment="CENTER">
          <children>
-            <VBox alignment="TOP_CENTER" maxWidth="400.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" maxHeight="1.7976931348623157E308" maxWidth="400.0" styleClass="SectionBox" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
                <children>
-                  <Label text="Label" />
-                  <TextField />
-                  <HBox>
+                  <Label text="SEARCH PRODUCTS">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin></Label>
+                  <TextField fx:id="searchField" onAction="#handleSearch" promptText="Search by Name/ Barcode">
+                     <VBox.margin>
+                        <Insets left="5.0" right="5.0" />
+                     </VBox.margin></TextField>
+                  <HBox alignment="CENTER">
                      <children>
-                        <Button mnemonicParsing="false" text="Button" />
-                        <Button mnemonicParsing="false" text="Button" />
+                        <Button fx:id="scanBarcodeButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Scan Barcode" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
+                        <Button fx:id="recentProductButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Recent Product" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </HBox.margin></Button>
                      </children>
                   </HBox>
-                  <Label text="Label" />
-                  <GridPane alignment="CENTER">
+                  <Label text="CATAGORIES">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin></Label>
+                  <GridPane alignment="CENTER" hgap="5.0" maxHeight="100.0" styleClass="SectionBox" vgap="5.0" VBox.vgrow="ALWAYS">
                     <columnConstraints>
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -111,39 +135,63 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
                      <children>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Button" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Button fx:id="allItemsButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleAllItems" text="All Items" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Button fx:id="groceryButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleGrocery" text="Grocery" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Button fx:id="dairyButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleDairy" text="Dairy" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Button" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Button fx:id="beverageButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleBeverage" text="Bevrage" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Button" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Button fx:id="personalCareButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handlePersonalCare" text="Personal Care" GridPane.columnIndex="1" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </Button>
-                        <Button alignment="CENTER" mnemonicParsing="false" text="Button" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER" GridPane.vgrow="ALWAYS">
+                        <Button fx:id="householdButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleHousehold" text="Household" GridPane.columnIndex="2" GridPane.halignment="CENTER" GridPane.hgrow="ALWAYS" GridPane.rowIndex="1" GridPane.valignment="CENTER">
                            <GridPane.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </GridPane.margin>
+                           <padding>
+                              <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                           </padding>
                         </Button>
                      </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
                   </GridPane>
-                  <GridPane>
+                  <GridPane fx:id="productGridPane" alignment="CENTER" gridLinesVisible="true" hgap="8.0" styleClass="SectionBox" vgap="8.0" VBox.vgrow="ALWAYS">
                     <columnConstraints>
                         <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
                       <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
@@ -153,49 +201,83 @@
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                       <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
                     </rowConstraints>
-                  </GridPane>
-                  <Button alignment="CENTER" mnemonicParsing="false" text="Button" VBox.vgrow="ALWAYS" />
-               </children>
-            </VBox>
-            <VBox alignment="TOP_CENTER" HBox.hgrow="ALWAYS">
-               <children>
-                  <Label text="Label" VBox.vgrow="ALWAYS" />
-                  <TreeTableView maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
-                    <columns>
-                      <TreeTableColumn maxWidth="60.0" minWidth="34.0" prefWidth="45.0" text="#" />
-                      <TreeTableColumn maxWidth="250.0" minWidth="100.0" prefWidth="160.0" text="Product Name" />
-                      <TreeTableColumn maxWidth="80.0" minWidth="45.0" prefWidth="60.0" text="Qty" />
-                      <TreeTableColumn maxWidth="120.0" minWidth="70.0" prefWidth="90.0" text="Unit Price" />
-                      <TreeTableColumn maxWidth="110.0" minWidth="65.0" text="Discount" />
-                      <TreeTableColumn maxWidth="80.0" minWidth="50.0" prefWidth="65.0" text="GST" />
-                      <TreeTableColumn maxWidth="140.0" minWidth="75.0" prefWidth="100.0" text="Total" />
-                      <TreeTableColumn maxWidth="90.0" minWidth="60.0" prefWidth="75.0" text="Remove" />
-                    </columns>
                      <VBox.margin>
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
+                     <padding>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </padding>
+                  </GridPane>
+                  <Button fx:id="addItemButton" alignment="CENTER" mnemonicParsing="false" onAction="#handleAddItem" text="+ Add Custom Product" textAlignment="CENTER" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin></Button>
+               </children>
+            </VBox>
+            <VBox alignment="TOP_CENTER" styleClass="SectionBox" HBox.hgrow="ALWAYS">
+               <children>
+                  <Label text=" ADD ITEMS" VBox.vgrow="ALWAYS">
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin></Label>
+                  <TableView fx:id="billTable" maxHeight="1.7976931348623157E308" maxWidth="1.7976931348623157E308" VBox.vgrow="ALWAYS">
+                    <columns>
+                      <TableColumn fx:id="billNumberColumn" prefWidth="75.0" text="#" />
+                      <TableColumn fx:id="billProductNameColumn" prefWidth="75.0" text="Product Name" />
+                      <TableColumn fx:id="billQuantityColumn" prefWidth="75.0" text="Qty" />
+                      <TableColumn fx:id="billUnitPriceColumn" prefWidth="75.0" text="Unit Price" />
+                      <TableColumn fx:id="billDiscountColumn" prefWidth="75.0" text="Discount" />
+                      <TableColumn fx:id="billGstColumn" prefWidth="75.0" text="GST" />
+                      <TableColumn fx:id="billTotalColumn" prefWidth="75.0" text="Total" />
+                       <TableColumn fx:id="billRemoveColumn" prefWidth="75.0" text="Remove" />
+                    </columns>
                      <columnResizePolicy>
-                        <TreeTableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
                      </columnResizePolicy>
-                  </TreeTableView>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </TableView>
+                  <HBox alignment="CENTER_LEFT" styleClass="SectionBox">
+                     <children>
+                        <Button fx:id="clearCartButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Clear Cart" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="15.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="applyDiscountButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Apply Discount" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="10.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                        <Button fx:id="addNoteButton" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Add Note" HBox.hgrow="ALWAYS">
+                           <HBox.margin>
+                              <Insets bottom="5.0" left="10.0" right="15.0" top="5.0" />
+                           </HBox.margin>
+                        </Button>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
+                     </VBox.margin>
+                  </HBox>
                </children>
                <HBox.margin>
                   <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin></VBox>
-            <VBox alignment="TOP_CENTER" maxWidth="300.0" HBox.hgrow="ALWAYS">
+            <VBox alignment="TOP_CENTER" maxWidth="250.0" minWidth="100.0" styleClass="SectionBox" HBox.hgrow="ALWAYS">
                <children>
-                  <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                  <VBox alignment="CENTER" styleClass="SectionBox" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label alignment="CENTER" text="Label" VBox.vgrow="ALWAYS">
+                        <Label alignment="CENTER" text="BILL SUMMARY" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </Label>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label text="Total Items" HBox.hgrow="ALWAYS" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="totalItemsLabel" text="Label" HBox.hgrow="ALWAYS" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -203,9 +285,9 @@
                         </HBox>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label text="Sub Total" HBox.hgrow="ALWAYS" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="subTotalLabel" text="Label" HBox.hgrow="ALWAYS" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -213,9 +295,9 @@
                         </HBox>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label text="Discount" HBox.hgrow="ALWAYS" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="discountLabel" text="Label" HBox.hgrow="ALWAYS" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -223,9 +305,9 @@
                         </HBox>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label text="Taxable Amount" HBox.hgrow="ALWAYS" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="taxableAmountLabel" text="Label" HBox.hgrow="ALWAYS" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -233,9 +315,9 @@
                         </HBox>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label text="GST (5%)" HBox.hgrow="ALWAYS" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="gstLabel" text="Label" HBox.hgrow="ALWAYS" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -243,9 +325,9 @@
                         </HBox>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label text="GRAND TOTAL" HBox.hgrow="ALWAYS" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label fx:id="grandTotalLabel" text="Label" HBox.hgrow="ALWAYS" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -256,18 +338,18 @@
                         <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                      </VBox.margin>
                   </VBox>
-                  <VBox alignment="CENTER" VBox.vgrow="ALWAYS">
+                  <VBox alignment="CENTER" styleClass="SectionBox" VBox.vgrow="ALWAYS">
                      <children>
-                        <Label text="Label" VBox.vgrow="ALWAYS">
+                        <Label text="PAYMENT" VBox.vgrow="ALWAYS">
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                         </Label>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label text="Payment Method" HBox.hgrow="ALWAYS" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <ChoiceBox prefWidth="150.0" HBox.hgrow="ALWAYS" />
+                              <ChoiceBox fx:id="paymentMethodChoiceBox" HBox.hgrow="ALWAYS" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -275,9 +357,9 @@
                         </HBox>
                         <HBox alignment="CENTER" VBox.vgrow="ALWAYS">
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS" />
+                              <Label alignment="CENTER" text="Recieved Amount" HBox.hgrow="ALWAYS" />
                               <Region HBox.hgrow="ALWAYS" />
-                              <TextField HBox.hgrow="ALWAYS" />
+                              <TextField fx:id="receivedAmountField" maxWidth="100.0" HBox.hgrow="ALWAYS" />
                            </children>
                            <VBox.margin>
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
@@ -288,7 +370,7 @@
                               <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                            </VBox.margin>
                            <children>
-                              <Label text="Label" HBox.hgrow="ALWAYS">
+                              <Label text="Return Amount" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
@@ -298,7 +380,7 @@
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
                               </Region>
-                              <Label text="Label" HBox.hgrow="ALWAYS">
+                              <Label fx:id="returnAmountLabel" text="Label" HBox.hgrow="ALWAYS">
                                  <HBox.margin>
                                     <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                                  </HBox.margin>
@@ -321,37 +403,40 @@
       </HBox>
    </center>
    <bottom>
-      <HBox alignment="CENTER" BorderPane.alignment="CENTER">
+      <HBox alignment="CENTER" styleClass="SectionBox" BorderPane.alignment="CENTER">
          <children>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS">
+            <Button fx:id="newBillButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleNewBill" text="New Bill" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS">
+            <Button fx:id="holdBillButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Hold Bill" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS">
+            <Button fx:id="clearBillButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handleClearBill" text="Clear Bill" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS">
+            <Button fx:id="saveDraftButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Save Draft" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS">
+            <Button fx:id="printBillButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Print Bill" HBox.hgrow="ALWAYS">
                <HBox.margin>
                   <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
                </HBox.margin>
             </Button>
-            <Button alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" text="Button" HBox.hgrow="ALWAYS">
+            <Button fx:id="payButton" alignment="CENTER" contentDisplay="CENTER" maxWidth="1.7976931348623157E308" mnemonicParsing="false" onAction="#handlePay" text="PAY" textAlignment="CENTER" HBox.hgrow="ALWAYS">
                <HBox.margin>
-                  <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+                  <Insets bottom="5.0" left="5.0" right="5.0" top="5.0" />
                </HBox.margin>
+               <font>
+                  <Font name="System Bold" size="25.0" />
+               </font>
             </Button>
          </children>
          <BorderPane.margin>

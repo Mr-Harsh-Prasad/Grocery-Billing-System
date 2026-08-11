@@ -3,7 +3,7 @@
 <?import javafx.scene.control.Tab?>
 <?import javafx.scene.control.TabPane?>
 
-<TabPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
+<TabPane fx:id="tabPane" fx:controller="Application.controllers.MainController" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" tabClosingPolicy="UNAVAILABLE" xmlns="http://javafx.com/javafx/26" xmlns:fx="http://javafx.com/fxml/1">
   <tabs>
       <Tab text="Dashboard">
           <content>
@@ -15,9 +15,9 @@
               <fx:include source="Billing.fxml" />
           </content>
       </Tab>
-      <Tab text="Products">
+      <Tab fx:id="productsTab" text="Products">
           <content>
-              <fx:include source="Product.fxml" />
+              <fx:include fx:id="productPage" source="Product.fxml" />
           </content>
       </Tab>
       <Tab text="Customers">
