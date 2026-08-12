@@ -1,4 +1,5 @@
-### IntelliJ IDEA ###
+### IntelliJ IDEA
+
 .idea/
 out/
 *.class
@@ -6,8 +7,10 @@ out/
 !**/src/main/**/out/
 !**/src/test/**/out/
 .kotlin
+*.iml
 
-### Eclipse ###
+### Eclipse
+
 .apt_generated
 .classpath
 .factorypath
@@ -19,18 +22,22 @@ bin/
 !**/src/main/**/bin/
 !**/src/test/**/bin/
 
-### NetBeans ###
+### NetBeans
+
 /nbproject/private/
 /nbbuild/
 /dist/
 /nbdist/
 /.nb-gradle/
 
-### VS Code ###
+### VS Code
+
 .vscode/
 
-### Mac OS ###
+### Mac OS
+
 .DS_Store
 
-### db ###
+### db
+
 *.db
