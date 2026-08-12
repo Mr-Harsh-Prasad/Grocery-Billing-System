@@ -41,3 +41,6 @@ bin/
 ### db
 
 *.db
+target/
+
+sesApplication
